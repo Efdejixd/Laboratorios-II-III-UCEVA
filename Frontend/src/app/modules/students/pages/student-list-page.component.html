@@ -1,0 +1,32 @@
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+  <div><h1 class="h2 page-title mb-1">Estudiantes</h1>
+  <p class="text-secondary mb-0">Consulta y administra los registros de estudiantes.</p></div>
+  <a routerLink="new" class="btn btn-primary">+ Crear estudiante</a>
+</div>
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+<div class="card shadow-sm"><div class="card-body p-0">
+  <div *ngIf="loading" class="p-4 text-secondary" role="status">Cargando registros...</div>
+  <div *ngIf="!loading && records.length === 0 && !errorMessage" class="p-4 text-secondary">No hay registros. Puedes crear el primero.</div>
+  <div class="table-responsive" *ngIf="!loading && records.length > 0">
+    <table class="table table-hover align-middle mb-0"><thead><tr>
+<th scope="col">ID</th>
+<th scope="col">Nombre</th>
+<th scope="col">Correo electrónico</th>
+<th scope="col">Semestre</th>
+<th scope="col">Estado</th>
+      <th scope="col">Acciones</th>
+    </tr></thead><tbody><tr *ngFor="let item of records">
+  <td>{{ item.id }}</td>
+  <td>{{ item.name }}</td>
+  <td>{{ item.email }}</td>
+  <td>{{ item.semester }}</td>
+  <td><span class="badge" [class.bg-success]="item.status" [class.bg-secondary]="!item.status">{{ item.status ? 'Activo' : 'Inactivo' }}</span></td>
+      <td><div class="d-flex flex-wrap gap-2">
+        <a class="btn btn-sm btn-outline-primary" [routerLink]="[item.id]">Ver</a>
+        <a class="btn btn-sm btn-outline-secondary" [routerLink]="[item.id, 'edit']">Editar</a>
+        <button class="btn btn-sm btn-outline-danger" type="button" (click)="remove(item)" [disabled]="busyId === item.id">{{ busyId === item.id ? 'Eliminando...' : 'Eliminar' }}</button>
+      </div></td>
+    </tr></tbody></table>
+  </div>
+</div></div>
+<button class="btn btn-link px-0 mt-3" (click)="load()" type="button" [disabled]="loading">Actualizar listado</button>

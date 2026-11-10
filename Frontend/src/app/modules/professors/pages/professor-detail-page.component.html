@@ -1,0 +1,14 @@
+    <a routerLink="/professors" class="text-decoration-none">← Volver a profesores</a>
+    <h1 class="h2 page-title my-3">Detalle de profesor</h1>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+    <div *ngIf="loading" class="text-secondary" role="status">Cargando detalle...</div>
+    <div class="card shadow-sm" *ngIf="record as item"><div class="card-body p-4">
+      <p class="text-secondary">Registro #{{ item.id }}</p>
+      <dl class="row mb-4">
+      <dt class="col-sm-4">Nombre</dt><dd class="col-sm-8">{{ item.name }}</dd>
+<dt class="col-sm-4">Correo electrónico</dt><dd class="col-sm-8">{{ item.email }}</dd>
+<dt class="col-sm-4">Departamento</dt><dd class="col-sm-8">{{ item.department }}</dd>
+<dt class="col-sm-4">Estado</dt><dd class="col-sm-8">{{ item.status ? 'Activo' : 'Inactivo' }}</dd>
+      </dl>
+      <a class="btn btn-primary" routerLink="edit">Editar registro</a>
+    </div></div>

@@ -1,0 +1,14 @@
+<nav class="navbar navbar-expand-md app-navbar" data-bs-theme="dark">
+  <div class="container content-wrap">
+    <a class="navbar-brand fw-semibold" routerLink="/">UCEVA · Laboratorio III</a>
+    <div class="d-flex flex-wrap gap-2 gap-md-3">
+      <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+      <a class="nav-link" routerLink="/students" routerLinkActive="active">Estudiantes</a>
+      <a class="nav-link" routerLink="/courses" routerLinkActive="active">Cursos</a>
+      <a class="nav-link" routerLink="/professors" routerLinkActive="active">Profesores</a>
+      <a class="nav-link" routerLink="/classrooms" routerLinkActive="active">Salones</a>
+    </div>
+  </div>
+</nav>
+<main class="container content-wrap py-4 py-md-5"><router-outlet></router-outlet></main>
+<footer class="text-center small-help pb-4 small">Programación en Ambiente Web I · Angular + Node.js + PostgreSQL</footer>

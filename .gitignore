@@ -1,0 +1,12 @@
+# Entrega: excluir credenciales, dependencias y datos locales
+Backend/.env
+Backend/node_modules/
+Backend/dist/
+Backend/postgres/
+Backend/pgadmin/
+Backend/docker-compose.local.yml
+Frontend/node_modules/
+Frontend/.angular/
+Frontend/dist/
+node_modules/
+.DS_Store

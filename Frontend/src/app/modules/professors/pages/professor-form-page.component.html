@@ -1,0 +1,31 @@
+    <a routerLink="/professors" class="text-decoration-none">← Volver a profesores</a>
+    <h1 class="h2 page-title my-3">{{ editId === null ? 'Crear profesor' : 'Editar profesor' }}</h1>
+    <div class="card shadow-sm"><div class="card-body p-4">
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">{{ errorMessage }}</div>
+      <p class="text-secondary" *ngIf="loading" role="status">Cargando registro...</p>
+      <form [formGroup]="form" (ngSubmit)="submit()" *ngIf="!loading && !recordNotFound" novalidate>
+        <div class="mb-3">
+               <label class="form-label" for="name">Nombre</label>
+               <input id="name" class="form-control" [class.is-invalid]="form.get('name')?.invalid && form.get('name')?.touched" type="text" maxlength="100" formControlName="name">
+               <div class="invalid-feedback">Verifica el campo nombre.</div>
+              </div>
+<div class="mb-3">
+               <label class="form-label" for="email">Correo electrónico</label>
+               <input id="email" class="form-control" [class.is-invalid]="form.get('email')?.invalid && form.get('email')?.touched" type="email" maxlength="150" formControlName="email">
+               <div class="invalid-feedback">Verifica el campo correo electrónico.</div>
+              </div>
+<div class="mb-3">
+               <label class="form-label" for="department">Departamento</label>
+               <input id="department" class="form-control" [class.is-invalid]="form.get('department')?.invalid && form.get('department')?.touched" type="text" maxlength="100" formControlName="department">
+               <div class="invalid-feedback">Verifica el campo departamento.</div>
+              </div>
+<div class="form-check form-switch mb-4">
+                <input id="status" class="form-check-input" type="checkbox" formControlName="status">
+                <label for="status" class="form-check-label">Registro activo</label>
+              </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button type="submit" class="btn btn-primary" [disabled]="saving || form.invalid">{{ saving ? 'Guardando...' : (editId === null ? 'Crear' : 'Guardar cambios') }}</button>
+          <a routerLink="/professors" class="btn btn-outline-secondary">Cancelar</a>
+        </div>
+      </form>
+    </div></div>

@@ -1,0 +1,14 @@
+:root { --green: #24473c; --light-green: #eaf0e8; --earth: #b4a78d; }
+body { background: #f6f7f5; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; color: #25342d; }
+.app-navbar { background: var(--green); }
+.app-navbar .nav-link, .app-navbar .navbar-brand { color: white; }
+.app-navbar .nav-link.active { color: #f0e3bf; font-weight: 700; }
+.content-wrap { max-width: 1120px; }
+.page-title { color: var(--green); font-weight: 750; letter-spacing: -.02em; }
+.card { border: 1px solid #e1e5df; border-radius: 12px; }
+.btn-primary { background: #315b49; border-color: #315b49; }
+.btn-primary:hover { background: #24473c; border-color: #24473c; }
+.btn-outline-primary { border-color: #315b49; color: #315b49; }
+.btn-outline-primary:hover { background: #315b49; border-color: #315b49; }
+.table thead th { color: #314f43; background: #eef3eb; }
+.small-help { color: #617269; }

@@ -1,0 +1,35 @@
+services:
+  myDB:
+    image: postgres:15.3
+    container_name: backend-crud-app
+    restart: always
+    ports:
+      - "55432:5432"
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: backend-crud-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d backend-crud-db"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  pdAdmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin-laboratorio-ii
+    restart: always
+    depends_on:
+      myDB:
+        condition: service_healthy
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@google.com
+      PGADMIN_DEFAULT_PASSWORD: "123456"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+volumes:
+  postgres_data:
+  pgadmin_data:
